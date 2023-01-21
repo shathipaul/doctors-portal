@@ -32,7 +32,7 @@ const Banner = () => {
         },
     ]
     return (
-        <div className="carousel max-w-7xl mx-auto rounded-lg">
+        <section className="carousel rounded-lg">
             {
                 bannerData.map(bD => <div key={bD.id} id={`slide${bD.id}`} className="carousel-item relative w-full text-white">
 
@@ -53,7 +53,7 @@ const Banner = () => {
                 </div>)
             }
 
-        </div>
+        </section>
     );
 };
 

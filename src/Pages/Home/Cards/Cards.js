@@ -1,9 +1,9 @@
 import React from 'react';
-import clock from '../../../../assets/images/icons/clock.svg'
-import location from '../../../../assets/images/icons/location.svg'
-import phone from '../../../../assets/images/icons/phone.svg'
+import clock from '../../../assets/images/icons/clock.svg'
+import location from '../../../assets/images/icons/location.svg'
+import phone from '../../../assets/images/icons/phone.svg'
 
-const InfoCards = () => {
+const Cards = () => {
     const cardData = [
         {
             id: 1,
@@ -28,9 +28,9 @@ const InfoCards = () => {
         }
     ]
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 -mt-12'>
+        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 -mt-12'>
             {
-                cardData.map(data => <div className="card card-side bg-blue-500 text-white px-4 shadow-xl ">
+                cardData.map(data => <div className="card card-side gray text-white px-4 shadow-xl ">
                     <figure><img src={data.icon} alt="" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{data.name}</h2>
@@ -39,8 +39,8 @@ const InfoCards = () => {
                 </div>)
             }
 
-        </div>
+        </section>
     );
 };
 
-export default InfoCards;
+export default Cards;
