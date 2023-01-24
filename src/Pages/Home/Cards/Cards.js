@@ -28,7 +28,7 @@ const Cards = () => {
         }
     ]
     return (
-        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 -mt-12'>
+        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 '>
             {
                 cardData.map(data => <div className="card card-side gray text-white px-4 shadow-xl ">
                     <figure><img src={data.icon} alt="" /></figure>
