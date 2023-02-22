@@ -28,10 +28,10 @@ const Cards = () => {
         }
     ]
     return (
-        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 '>
+        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 my-10 '>
             {
                 cardData.map(data => <div className="card card-side gray text-white px-4 shadow-xl ">
-                    <figure><img src={data.icon} alt="" /></figure>
+                    <figure><img src={data.icon} alt="icon" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{data.name}</h2>
                         <p>{data.des}</p>
