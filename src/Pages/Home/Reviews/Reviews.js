@@ -12,18 +12,7 @@ import "swiper/css/navigation";
 // import required modules
 import { FreeMode, Pagination, Navigation } from "swiper";
 
-// breakpoints: {
-//     // when window width is >= 320px
-//     320: {
-//       slidesPerView: 2,
-//       spaceBetween: 20
-//     },
-//     // when window width is >= 480px
-//     480: {
-//       slidesPerView: 3,
-//       spaceBetween: 30
-//     },
-//   }
+
 
 const Reviews = () => {
     const reviews = [
@@ -43,7 +32,8 @@ const Reviews = () => {
                 <h3 className="text-3xl font-bold">What Our Patients Says</h3>
             </div>
             <Swiper
-                slidesPerView={4}
+
+                slidesPerView={1}
                 spaceBetween={30}
                 navigation={true}
                 freeMode={true}
@@ -51,6 +41,24 @@ const Reviews = () => {
                 pagination={{
                     clickable: true
                 }}
+                breakpoints={
+
+                    {
+
+                        576: {
+                            slidesPerView: 2,
+                            spaceBetween: 30
+                        },
+                        992: {
+                            slidesPerView: 3,
+                            spaceBetween: 30
+                        },
+                        1200: {
+                            slidesPerView: 4,
+                            spaceBetween: 30
+                        },
+                    }
+                }
                 modules={[Navigation, FreeMode, Pagination]}
                 className="mySwiper"
             >
@@ -73,7 +81,7 @@ const Reviews = () => {
                     }
                 </div>
             </Swiper>
-        </section>
+        </section >
     );
 };
 
