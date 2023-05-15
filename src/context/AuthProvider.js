@@ -10,12 +10,12 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const createUser = (email, password) => {
-        setLoading(false)
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const login = (email, password) => {
-        setLoading(false)
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -32,12 +32,13 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('Observing user');
             setUser(currentUser)
+            setLoading(false)
         })
 
         return () => unsubscribe()
     }, [])
 
-    const authInfo = { createUser, login, logout, updateUser, user, loading }
+    const authInfo = { createUser, login, logout, updateUser, user, loading, setLoading }
     return (
         <div>
             <AuthContext.Provider value={authInfo}>

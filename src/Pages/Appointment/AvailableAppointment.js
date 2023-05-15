@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../context/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 import AppointmentModal from './AppointmentModal';
 import AppointmentOptions from './AppointmentOptions';
@@ -8,6 +10,7 @@ import AppointmentOptions from './AppointmentOptions';
 const AvailableAppointment = ({ selectedDate }) => {
     const [treatment, setTreatment] = useState(null);
     const date = format(selectedDate, 'PP');
+    const { user } = useContext(AuthContext);
 
     const { data: appointmentOptions = [], refetch, isLoading } = useQuery({
         queryKey: ['appointmentOptions', date],
@@ -36,13 +39,18 @@ const AvailableAppointment = ({ selectedDate }) => {
                 }
             </div>
             {
-                treatment &&
-                <AppointmentModal
-                    treatment={treatment}
-                    setTreatment={setTreatment}
-                    selectedDate={selectedDate}
-                    refetch={refetch}
-                />}
+                user?.uid ?
+                    treatment &&
+                    <AppointmentModal
+                        treatment={treatment}
+                        setTreatment={setTreatment}
+                        selectedDate={selectedDate}
+                        refetch={refetch}
+                    />
+                    : toast('Login to book an appointment')
+
+            }
+
         </div>
     );
 };

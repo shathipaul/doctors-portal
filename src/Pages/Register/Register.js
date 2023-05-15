@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, setLoading } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -13,6 +13,7 @@ const Register = () => {
     const from = location.state?.from?.pathname || '/';
 
     const handleRegister = data => {
+        setLoading(true)
         console.log(data);
         setRegisterError('')
         createUser(data.email, data.password)
@@ -24,7 +25,9 @@ const Register = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate(from, { replace: true })
+                        saveUser(data.username, data.email)
+
+                        // navigate(from, { replace: true })
                     })
                     .catch(error => console.log(error))
             })
@@ -33,6 +36,24 @@ const Register = () => {
                 setRegisterError(error.message)
             })
     }
+
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setLoading(false)
+                navigate(from, { replace: true })
+            })
+    }
+
     return (
         <div className='h-[700px] flex justify-center items-center'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">

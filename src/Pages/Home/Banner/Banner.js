@@ -48,9 +48,9 @@ const Banner = () => {
                         </div>
 
                         <div className="absolute flex-col justify-evenly transform -translate-y-1/2 left-16 right-5 top-1/2">
-                            <h1 className='text-4xl lg:text-6xl font-bold'>Helthy Mind, <br /> Healthy You.</h1>
-                            <p className='w-1/2 py-8'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi animi, temporibus eos voluptas nobis iste. Itaque ea nemo, maiores, sit consequuntur dolore pariatur impedit possimus praesentium provident officia necessitatibus cum.</p>
-                            <button className="btn btn-outline hover:btn-primary text-white">Appointment</button>
+                            <h1 className='text-2xl md:text-6xl font-bold pb-8'>Healthy Mind, <br /> Healthy You.</h1>
+                            <p className='w-1/2 pb-8 hidden lg:block'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi animi, temporibus eos voluptas nobis iste. Itaque ea nemo, maiores, sit consequuntur dolore pariatur impedit possimus praesentium provident officia necessitatibus cum.</p>
+                            <button className="btn btn-outline hover:btn-primary text-white hidden md:block">Appointment</button>
                         </div>
                     </SwiperSlide>)
                 }
